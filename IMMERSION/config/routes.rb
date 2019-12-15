@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :show, :create, :update, :destroy] do
     resources :attendances, except: :index
+    collection do 
+      get :search
+    end
   end
 
 

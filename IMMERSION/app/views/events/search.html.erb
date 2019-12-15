@@ -1,34 +1,66 @@
-<div class="center">
-<h1>RÉSULTATS DE LA RECHERCHE</h1>  
 
-<div class="container center-div">
-<!--section card-->
-<div class="row">
+<p id="notice"><%= notice %></p>
 
-<% @events.each do |event|%>
-<!-- classe des cards-->
-    <div class="card text-white bg-primary mb-3 ml-3 mr-3" style="max-width: 20rem;">
-<!-- début de la 1ere card-->
-    
-    
-      <div class="card-header"><%= event.title %> </div>
-      <img class="card-img-top" src=<%= asset_path 'photo1.jpg' %> alt="Card image cap">    
 
-      <div class="card-body">
-      <p class="card-text"><center><%= event.description %><br> 
-      <%= event.short_location %><br> 
-      <a class="btn btn-secondary btn-md" href="#" role="button">Preview</a> 
-      <a class="btn btn-secondary btn-md" href="#" role="button">Shop now</a>
-      </center></p>
+
+
+<br/>
+
+<!-- <div class="container-fluid"> -->
+
+  <h1 class="my-5 text-center">LES IMMERSIONS</h1>
+
+
+
+  <div class ="container">
+
+    <div  class="row">
+      <% @events.each do |event| %>
+
+          <div class=" p-3 col-lg-4 col-sm-12 ">
+            <div class="card p-3 shadow">
+              <img class="card-img-top  img-border" src="<%= asset_path 'photo2.jpg' %>" alt="Card image cap"/>
+              <div class="center mt-2"><%= event.title.upcase %></div>
+                <div class="card-body">
+                  <ul class="none">
+                      <li><%= event.start_datetime%></li>
+                      <li><%= event.duration %> min</li><br />
+                      <li class="card-text"><%= event.description %></li><br />
+
+                      <li><%= event.short_location %></li>
+                      <li><%= event.adress %></li>
+
+                      <li> <!-- if user = register -->
+                        <%= event.zip_code %>
+                        <%= event.city %>
+                      </li>
+                  </ul><br />
+
+                </div>
+                <div class="card-foot center">
+                  <a role="button"<%= link_to "EN VOIR +", event_path(event.id), :class =>'btn btn-sm btn-primary'%></a>
+                  <a role="button"><%= link_to 'Se pré-inscrire', new_event_attendance_path(event.id), :class=>"btn btn-sm btn-primary"%></a><br />
+                </div>
+
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+
 
     </div>
-    </div>
-<% end %> 
+
+
+
+
+
+<div class="center mb-5">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'New Event', new_admin_event_path %> |
+    <%= link_to 'BACK', :admin_root, :class => "btn btn-primary" %>
+  <% else %>
+    <%= link_to '<< BACK', :root, :class=> "btn btn-primary" %>
+  <% end %>
+
 </div>
-</div>
-</div>
-<div class="center">
-<a class="btn btn-primary" role="button" <%= link_to "<< BACK", :back %></a>
-</div>
-<br/>
-<br/>
