@@ -1,5 +1,5 @@
 <div class="center">
-<h1>RÉSULTATS DE LA RECHERCHE</h1>  
+<h1>RÉSULTATS DE LA RECHERCHE</h1>
 
 <div class="container center-div">
 <!--section card-->
@@ -9,26 +9,26 @@
 <!-- classe des cards-->
     <div class="card text-white bg-primary mb-3 ml-3 mr-3" style="max-width: 20rem;">
 <!-- début de la 1ere card-->
-    
-    
+
+
       <div class="card-header"><%= event.title %> </div>
-      <img class="card-img-top" src=<%= asset_path 'photo1.jpg' %> alt="Card image cap">    
+      <img class="card-img-top" src=<%= asset_path 'photo1.jpg' %> alt="Card image cap">
 
       <div class="card-body">
-      <p class="card-text"><center><%= event.description %><br> 
-      <%= event.short_location %><br> 
-      <a class="btn btn-secondary btn-md" href="#" role="button">Preview</a> 
+      <p class="card-text"><center><%= event.description %><br>
+      <%= event.short_location %><br>
+      <a class="btn btn-secondary btn-md" href="#" role="button">Preview</a>
       <a class="btn btn-secondary btn-md" href="#" role="button">Shop now</a>
       </center></p>
 
     </div>
     </div>
-<% end %> 
+<% end %>
 </div>
 </div>
 </div>
 <div class="center">
-<a class="btn btn-primary" role="button" <%= link_to "<< BACK", :back %></a>
+<a <%= link_to "BACK", :back, :class =>"btn btn-primary" %></a>
 </div>
 <br/>
 <br/>

@@ -181,9 +181,10 @@
 
       <%= submit_tag "valider", :class => 'btn btn-success'%>
     <% end %> <br />
-
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', user_path(@user) %>
+  <div class="center">
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', user_path(@user), :class=>"btn btn-primary" %>
+  </div>
 </div>
 
 <br/>
