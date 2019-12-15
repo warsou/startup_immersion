@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<br />
+<br />
+<div class="container">
+  <h1>
+
+    <%= @startup.name.upcase %>
+  </h1>
+
+  <p>
+    <strong>Catch phrase: </strong>
+    <%= @startup.catch_phrase %>
+  </p>
+
+  <p>
+    <strong>Website url: </strong>
+    <%= @startup.website_url %>
+  </p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @startup.description %>
+</p>
+
+
+
+
+
+
+
+  <p>
+    <strong>Description: </strong>
+    <%= @startup.description %>
+  </p>
+</div><br /><br />
+<div class="center">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Edit', edit_admin_startup_path(@startup) %> |
+    <%= link_to 'Back', :startups, :class=>"btn btn-primary" %>
+  <% else %>
+    <%= link_to 'Back', :startups, :class=>"btn btn-primary" %>
+  <% end %>
+</div>

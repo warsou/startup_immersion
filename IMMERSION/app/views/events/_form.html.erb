@@ -1,0 +1,65 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title %>
+  </div> <br />
+
+  <div class="field">
+    <%= form.label :start_datetime %><br />
+    <%= form.datetime_select :start_datetime %>
+  </div><br />
+
+  <div class="field">
+    <%= form.label :duration %> (hour) <br />
+    <%= form.number_field :duration %>
+  </div><br />
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
+  </div><br />
+
+  <div class="field">
+    <%= form.label :short_location %><br />
+    <%= form.text_field :short_location, placeholder:"Notre Dame" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adress %><br />
+    <%= form.text_field :adress, placeholder:"6 pl J Paul II Prv Notre Dame" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %><br />
+    <%= form.text_field :zip_code, placeholder:"75004"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %><br />
+    <%= form.text_field :city, placeholder:"Paris" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :startup %><br />
+    <%= form.select :startup_id, options_from_collection_for_select(Startup.all, :id, :name, @event.startup_id), { :prompt => 'Choose from list :'} %>
+  </div> <br />
+
+  <%= form.hidden_field :event, :value => params[:latitude] %>
+  <%= form.hidden_field :event, :value => params[:longitude] %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

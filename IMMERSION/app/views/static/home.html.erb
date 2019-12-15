@@ -1,0 +1,113 @@
+<%= render 'banner' %>
+
+<div class="container">
+  <h1 class="text-center">STARTUP IMMERSION ?</h1>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="card shadow">
+        <img class="card-img-top" src=<%= asset_path 'photo6.jpg' %> alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><b>Startup Immersion</b> permet la mise en relation entre professionnel.les et startup ! Pré-inscris-toi aux immersions qui t'intéressent, renseigne ton profil et découvre les valeurs et les principes des startups de l'intérieur ! </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card shadow">
+        <img class="card-img-top" src=<%= asset_path 'photo3.jpg' %> alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Avec <b>Startup Immersion</b>, tu peux rencontrer et échanger en direct avec des professionnel.les des startup qui te font rêver et peut-être rencontrer l'équipe avec laquelle tu travailleras demain !  </p>
+        </div>
+      </div>
+    </div>
+  </div><br />
+  <p><%= link_to "All startups &raquo;".html_safe, startups_path, :class =>'btn btn-primary' %></p>
+</div>
+</div>
+
+<br/>
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div id="container1">
+    <h1 class="text-center text-white">LES STARTUP PARTENAIRES</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo1.png' %> alt="Card image cap">
+    </div>
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo2.png' %> alt="Card image cap">
+    </div>
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo6.png' %> alt="Card image cap">
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo7.png' %> alt="Card image cap">
+    </div>
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo5.png' %> alt="Card image cap">
+    </div>
+    <div class="col-sm">
+        <img class="card-img-top" src=<%= asset_path 'logo3.png' %> alt="Card image cap">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<br/>
+<div class="container">
+  <h1 class="text-center">NEWSLETTER</h1>
+  <div class="container-fluid">
+      <div class="row justify-content-center">
+        <p class="text-center">Pour ne rien rater des futures immersions et autres évènements proposés par <b>Startup Immersion</b>, inscris-toi à la newsletter !</p>
+      <br/>
+      <br/>
+      <div class="row justify-content-center">
+        <div class="col-sm-12">
+          <a class="btn btn-primary btn-lg" role="button" <%= link_to "S'INSCRIRE À LA NEWSLETTER", new_newsletter_path %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+<!-- <div class="container-fluid">
+  <div id="container1">
+    <h1 class="text-center text-white">RECHERCHE</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12">
+
+      <%# <%= render 'layouts/search_bar' %>
+
+
+
+    </div>
+  </div>
+</div>
+</div>
+</div> -->

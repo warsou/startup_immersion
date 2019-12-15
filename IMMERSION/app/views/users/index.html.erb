@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<!-- this page is ugly sorry because this page is not for user-->
+<h1 class="center">Users</h1>
+
+<div class="container-fluid">
+  <div class="row">
+      <% @users.each do |user| %>
+      <div class="card col-md-6 col-sm-12">
+         <ul class="none">
+
+          <li><strong>Email</strong> <%= user.email %></li>
+          <li>
+            <strong>First name</strong> <%= user.first_name %>
+            <strong>Last name</strong> <%= user.last_name %>
+          </li>
+
+          <li>
+            <strong>Situation</strong>
+            <% if user.situation == nil %>
+              <%= user.situation %>
+            <% else %>
+              <%= user.situation.title %>
+            <% end %>
+          </li>
+
+          <li>
+            <strong>Formation</strong>
+          <%= user.formation %>
+            <strong>Activity</strong>
+            <% if user.activity == nil %>
+              <%= user.activity %>
+            <% else %>
+              <%= user.activity.name %>
+            <% end %>
+          </li>
+          <li>
+            <strong>Description</strong> <%= user.description %>
+          </li>
+          <li>
+            <strong>Linkedin</strong> <%= user.linked_in_url %>
+            <strong>Newsletter</strong> <%= user.newsletter %>
+          </li>
+          <li>
+            <strong>Created at</strong> <%= user.created_at %>
+            <strong>Updated at</strong> <%= user.updated_at %>
+          </li>
+          <li>
+            <%= link_to 'Show', user %>&nbsp;
+            <%= link_to 'Edit', edit_user_path(user) %>&nbsp;
+            <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+        </ul>
+        </div>
+      <% end %>
+    </div> <br />
+    <div class="center">
+      <%= link_to 'Back', :back, :class =>"btn btn-primary" %>
+    </div>
+</div>

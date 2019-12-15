@@ -1,0 +1,190 @@
+    <p id="notice"><%= notice %></p>
+
+<div class="container"> <br /> <br />
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %><br/>
+      <%= link_to "Edit email / password", edit_user_registration_path %>
+    </p>
+
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
+
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
+
+    <p>
+      <strong>Situation:</strong>
+      <% if @user.situation == nil %>
+        <%= @user.situation %>
+      <% else %>
+        <%= @user.situation.title %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Formation:</strong>
+      <%= @user.formation %>
+    </p>
+
+    <p>
+      <strong>Activity:</strong>
+      <% if @user.activity == nil %>
+        <%= @user.activity %>
+      <% else %>
+        <%= @user.activity.name %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @user.description %>
+    </p>
+
+    <p>
+      <strong>Linkedin:</strong>
+      <%= @user.linked_in_url %>
+    </p>
+
+    <p>
+      <strong>Newsletter:</strong>
+      <%= @user.newsletter %>
+    </p>
+
+    <p>
+      <strong>Member since:</strong>
+      <%= @user.created_at %>
+    </p>
+
+    <p>
+      <strong>Last profile update:</strong>
+      <%= @user.updated_at %>
+    </p>
+
+    <% if @user.first_name != nil %>
+      <h2><strong>Registration of <%= @user.first_name %> :</strong></h2>
+    <% else %>
+       <h3><strong>Registration of this user :</strong></h3>
+    <% end %><br />
+
+    <% @user.events.each do |user_attendances| %>
+    <ul class="none">
+        <li>Event:    <%= user_attendances.title %></li>
+        <li>Date:     <%= user_attendances.start_datetime %></li>
+        <li><%= link_to "Details &raquo;".html_safe, event_path(user_attendances), :class =>'btn btn-sm btn-outline-secondary' %> </li>
+        <li> </li>
+    </ul> <br />
+    <% end %>
+
+    <p id="notice"><%= notice %></p>
+
+<div class="container"> <br /> <br />
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %><br/>
+      <%= link_to "Edit email / password", edit_user_registration_path %>
+    </p>
+
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
+
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
+
+    <p>
+      <strong>Situation:</strong>
+      <% if @user.situation == nil %>
+        <%= @user.situation %>
+      <% else %>
+        <%= @user.situation.title %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Formation:</strong>
+      <%= @user.formation %>
+    </p>
+
+    <p>
+      <strong>Activity:</strong>
+      <% if @user.activity == nil %>
+        <%= @user.activity %>
+      <% else %>
+        <%= @user.activity.name %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @user.description %>
+    </p>
+
+    <p>
+      <strong>Linkedin:</strong>
+      <%= @user.linked_in_url %>
+    </p>
+
+    <p>
+      <strong>Newsletter:</strong>
+      <%= @user.newsletter %>
+    </p>
+
+    <p>
+      <strong>Member since:</strong>
+      <%= @user.created_at %>
+    </p>
+
+    <p>
+      <strong>Last profile update:</strong>
+      <%= @user.updated_at %>
+    </p>
+
+    <% if @user.first_name != nil %>
+      <h2><strong>Registration of <%= @user.first_name %> :</strong></h2>
+    <% else %>
+       <h3><strong>Registration of this user :</strong></h3>
+    <% end %><br />
+
+    <% @user.events.each do |user_attendances| %>
+    <ul class="none">
+        <li>Event:    <%= user_attendances.title %></li>
+        <li>Date:     <%= user_attendances.start_datetime %></li>
+        <li><%= link_to "Details &raquo;".html_safe, event_path(user_attendances), :class =>'btn btn-sm btn-outline-secondary' %> </li>
+        <li> </li>
+    </ul> <br />
+    <% end %>
+
+
+    <h3><strong>Profil Page</strong></h3>
+    <p>Bienvenue sur la page Photo de profil<%=@user.id%></p>
+
+    <h3>Avatar actuel</h3>
+    <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+    <%else%>
+      <p>=== il n'y a pas encore d'avatar ===</p>
+    <%end%> <br />
+
+    <h3>Switch picture profile </h3>
+    <%= form_tag user_avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar%>
+
+      <%= submit_tag "valider", :class => 'btn btn-success'%>
+    <% end %> <br />
+
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', user_path(@user) %>
+</div>
+
+<br/>
+<br/>

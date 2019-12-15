@@ -1,0 +1,9 @@
+<div class="center">
+	<p> Tu cherches les immersions d'une start-up en particulier ?</p>
+<%= form_tag(search_events_path, :method => "get",:class= "") do %>
+   <%= search_field_tag :search, params[:search], placeholder: "Rechercher une start-up...", class: "search" %>
+   <br/>
+   <br/>
+   <%= button_tag "Rechercher", :class => 'btn btn-primary',:name => nil%>
+<% end %>
+</div>

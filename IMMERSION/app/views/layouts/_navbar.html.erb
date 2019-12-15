@@ -1,0 +1,47 @@
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <a class="navbar-brand" href="/">
+    <img src=<%= asset_path 'logo_transparent2.png' %> width="120" height="120" alt="">
+  </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "LES IMMERSIONS", events_path, class: "nav-link" %>
+          </li>
+             <li class="nav-item active">
+            <%= link_to "GALERIE", gallery_path, class: "nav-link" %>
+          </li>
+
+        </ul>
+      </div>
+
+        <% if user_signed_in?  %>
+                    <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              DÉCONNEXION
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="<%= user_path(current_user.id) %>">MON PROFIL</a>
+                  <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >DÉCONNEXION</a>
+                </div>
+        
+          </div>
+
+        <% else  %>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              CONNEXION
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="<%= new_user_session_path %>">SE CONNECTER</a>
+              <a class="dropdown-item" href="<%= new_user_registration_path %>">CRÉER UN COMPTE</a>
+            </div>
+          </div>
+
+        <% end  %>
+
+    </nav>

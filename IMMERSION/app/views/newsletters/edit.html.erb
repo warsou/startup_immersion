@@ -1,0 +1,8 @@
+<h1 class="center">Editing Newsletter</h1>
+
+<div class="container center">
+  <%= render 'form', newsletter: @newsletter %><br />
+
+  <%= link_to 'Show', @newsletter %> |
+  <%= link_to 'Back', newsletters_path, :class=>"btn btn-primary" %>
+</div>

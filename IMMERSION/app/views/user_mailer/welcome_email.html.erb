@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+
+	<% if @user.first_name == nil %>
+	  <h1>Salut <%= @user.email %> et bienvenue chez nous !</h1>
+	<% else %>
+	  <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+	<% end %>
+
+	<p>Tu t'es inscrit sur Start-Up Immersion en utilisant l'e-mail suivant : <%= @user.email %>.</p>
+	<p>Pour accéder à ton espace personnel, connecte-toi via : <%= @url %>.</p>
+	<p>À très vite sur Start-Up Immersion !</p>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<br />
+<h1 class="center">Newsletters</h1>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @newsletters.each do |newsletter| %>
+        <tr>
+          <td><%= newsletter.email %>&nbsp;</td>
+          <td><%= link_to 'Show', newsletter %>&nbsp;</td>
+          <td><%= link_to 'Edit', edit_newsletter_path(newsletter)%>&nbsp;</td>
+          <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Newsletter', new_newsletter_path, :class => "btn btn-success"%>
+</div>

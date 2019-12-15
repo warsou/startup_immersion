@@ -1,0 +1,118 @@
+
+<p id="notice"><%= notice %></p>
+
+<!-- GOOGLE MAP -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false&key=[YOUR_KEY_API]&callback=initMap"></script>
+    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
+    <script src='//underscorejs.org/underscore-min.js' type='text/javascript'></script>
+  <!-- GOOGLE MAP -->
+
+
+  <p id="notice"><%= notice %></p>
+
+
+
+
+<br />
+      <div class="container">
+            <h1 class="center"><%= @event.title.upcase %></h1>
+            <p class="lead">
+              <strong>Start date:</strong>
+              <%= @event.start_datetime %>
+            </p>
+            <p class="lead">
+              <strong>Duration:</strong>
+              <%= @event.duration %>
+            </p>
+
+            <p class="lead">
+              <strong>End date:</strong>
+              <%= @event.end_date %>
+            </p>
+
+            <p class="lead">
+              <strong>Description:</strong>
+              <%= @event.description %>
+            </p>
+
+            <p class="lead">
+              <strong>Short location:</strong>
+              <%= @event.short_location %>
+            </p>
+
+            <p class="lead">
+              <strong>Adress:</strong>
+              <%= @event.adress %>
+            </p>
+
+            <p class="lead">
+              <strong>Zip code:</strong>
+              <%= @event.zip_code %>
+            </p>
+
+            <p class="lead">
+              <strong>City:</strong>
+              <%= @event.city %>
+            </p>
+
+          <p class="lead">
+            <strong>Startup:</strong>
+            <%= @event.startup.name %>
+            <%= link_to 'Startup', startup_path(@event.startup.id) %>
+          </p><br/>
+
+          <br />
+          <br />
+          <div class="card">
+            <div class="shadow"><%= image_tag 'work.jpg' %></div>
+          </div><br />
+
+          <h3>Attendances</h3>
+          <% for attendance in @event.attendances %>
+          <p class="lead">
+            <%= attendance.motivation %>
+          </p>
+          <% end %>
+
+            <br />
+            <br />
+
+              <div id="map"><%= render 'google_map_event' %></div> <br />
+
+              <ul class="list-group list-group-flush">
+                <strong><h3>Registration for this event :</h3>
+                <p><%= @event.attendances.count %> registrations</p></strong>
+
+                <% @event.users.each do |event_attendances| %>
+
+                    <li class="list-group-item">
+
+                      &nbsp; <%= event_attendances.first_name %>
+                      &nbsp; <%= event_attendances.email %>
+                      <%= link_to "Details &raquo;".html_safe, user_path(event_attendances), :class =>'btn btn-sm btn-outline-secondary float-right' %>
+                    </li>
+                <% end %>
+              </ul><br />
+              <div class="center">
+
+                <% if current_user && current_user.admin? %>
+                  <%= link_to 'Edit', edit_admin_event_path(@event) %> |
+                  <%= link_to 'Ajouter une pré-inscription', new_event_attendance_path(@event) %> |
+                  <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+                <% elsif @event.users.include?(current_user) %>
+                  <% att = Attendance.find_by(user_id: current_user, event_id: @event) %>
+                    <%if att.reviewed? && att.validated? %>
+                      <%= link_to 'Mon inscription', user_path(current_user) %> |
+                    <%elsif att.reviewed? && att.validated? == false %>
+                      <%= link_to 'Ma pré-inscription', user_path(current_user) %> |
+                    <% else %>
+                      <%= link_to 'Déjà pré-inscrit(e)', user_path(current_user) %> |
+                    <% end %>
+                <% else %>
+                  <%= link_to 'Se pré-inscrire', new_event_attendance_path(@event) %> |
+                <% end %>
+                <%= link_to '<< BACK', :events, :class=>"btn btn-primary" %>
+
+              </div>
+          </div>

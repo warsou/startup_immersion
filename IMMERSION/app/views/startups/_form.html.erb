@@ -1,0 +1,37 @@
+<%= form_with(model: startup, local: true) do |form| %>
+  <% if startup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(startup.errors.count, "error") %> prohibited this startup from being saved:</h2>
+
+      <ul>
+      <% startup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :catch_phrase %>
+    <%= form.text_area :catch_phrase %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website_url %>
+    <%= form.text_field :website_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

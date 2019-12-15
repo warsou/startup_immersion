@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="center">Attendances</h1>
+  <div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>User &nbsp;</th>
+        <th>Event &nbsp;</th>
+        <th>Motivation &nbsp;</th>
+        <th>Comment &nbsp;</th>
+        <th>Created at &nbsp;</th>
+        <th>Updated at &nbsp;</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <tr>
+          <td><%= attendance.user.email %>&nbsp;</td>
+          <td><%= attendance.event.title %>&nbsp;</td>
+          <td><%= attendance.motivation %>&nbsp;</td>
+          <td><%= attendance.comment %>&nbsp;</td>
+          <td><%= attendance.created_at %>&nbsp;</td>
+          <td><%= attendance.updated_at %>&nbsp;</td>
+          <td><%= link_to 'Show Event', [@event] %>&nbsp;</td>
+          <td><%= link_to 'Show Attendance', event_attendance_path(@event, attendance) %>&nbsp;</td>
+          <td><%= link_to 'Edit Attendance', edit_event_attendance_path(@event, attendance) %>&nbsp;</td>
+          <td><%= link_to 'Destroy Attendance', [@event, attendance], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>
+
+<div class="center">
+  <%= link_to 'New Attendance', new_event_attendance_path(@event), :class=>"btn btn-primary" %>
+</div>

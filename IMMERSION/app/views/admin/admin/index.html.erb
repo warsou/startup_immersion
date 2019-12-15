@@ -1,0 +1,61 @@
+<h1 class="center">Welcome Administrateur</h1>
+
+<div class="container">
+		<%= link_to "My Profile", user_path(current_user) %>
+
+		<h3>Newsletters</h3>
+		<ul class="none">
+			<li><%= link_to 'Index Newsletters', newsletters_path, :class => "btn btn-outline-secondary"%>&nbsp;&nbsp;
+					<%= link_to 'New Newsletter', new_newsletter_path, :class => "btn btn-outline-primary" %>
+			</li>
+		</ul>
+
+		<h3>Users</h3>
+		<ul class="none">
+			<li><%= link_to 'Index Users', admin_users_path , :class => "btn btn-outline-secondary"%></li>
+		</ul>
+
+		<h3>Activities</h3>
+		<ul class="none">
+			<li>
+				<%= link_to 'Index Activities', activities_path, :class => "btn btn-outline-secondary" %>
+				<%= link_to 'New Activity', new_activity_path, :class => "btn btn-outline-primary" %>
+			</li>
+		</ul>
+
+		<h3>Situations</h3>
+		<ul class="none">
+			<li>
+				<%= link_to 'Index Situations', situations_path, :class => "btn btn-outline-secondary" %>
+				<%= link_to 'New Situation', new_situation_path, :class => "btn btn-outline-primary" %>
+			</li>
+		</ul>
+
+		<h3>Startups</h3>
+		<ul class="none">
+			<li>
+			<%= link_to 'Index Startups', startups_path, :class => "btn btn-outline-secondary" %>
+			<%= link_to 'New Startup', new_admin_startup_path, :class => "btn btn-outline-primary" %>
+			</li>
+		</ul>
+
+		<h3>Events</h3>
+		<ul class="none">
+			<li>
+				<%= link_to 'Index Events', events_path, :class => "btn btn-outline-secondary" %>
+				<%= link_to 'New Event', new_admin_event_path, :class => "btn btn-outline-primary" %>
+			</li>
+		</ul>
+
+		<h3>Attendances Submissions</h3>
+		<ul class="none">
+			<li><%= link_to "#{Attendance.where(reviewed: false).count} new submissions ! &raquo;".html_safe, admin_attendances_submissions_path %></li>
+			<li><%= Attendance.where(reviewed: false).count %> new submissions !</li>
+			<li><%= link_to 'Index', admin_attendances_submissions_path %></li>
+		</ul>
+	</div>
+
+<div class="center">
+	<%= link_to 'Back', :back, :class => "btn btn-primary" %> |
+	<%= link_to 'Home', :root, :class => "btn btn-secondary" %>
+</div>
